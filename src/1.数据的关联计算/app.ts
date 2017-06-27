@@ -6,16 +6,13 @@ const b$ = new Rx.Subject<number>();
 const c$ = Rx.Observable
     .combineLatest(a$, b$)
     .map(([a, b]) => {
+        console.log(`a=${a}`);
+        console.log(`b=${b}`);
         return a + b;
     });
 
-a$.subscribe(i => {
-    console.log(`a=${i}`);
-});
 
-b$.subscribe(i => {
-    console.log(`b=${i}`);
-});
+//消费
 
 c$.subscribe(i => {
     console.log(`c=${i}`);

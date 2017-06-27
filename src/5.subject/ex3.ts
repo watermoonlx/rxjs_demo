@@ -1,7 +1,8 @@
 import * as Rx from 'rxjs';
 
 let source$ = Rx.Observable.from([1, 2, 3])
-    .publish();
+    .publish()
+    .refCount();
 
 source$.subscribe({
     next: v => console.log(`observerA: ${v}`)
@@ -10,4 +11,5 @@ source$.subscribe({
 source$.subscribe({
     next: v => console.log(`observerB: ${v}`)
 });
+
 
